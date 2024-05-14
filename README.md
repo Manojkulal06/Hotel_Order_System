@@ -13,7 +13,7 @@ __Responsive Design__: The system is designed to work on various devices and scr
 
 **Usage**
 
-#L Clone the repository to your local machine.<br>
+Clone the repository to your local machine.<br>
 Open the index.html file in your web browser.<br>
 Select the desired item type (food or beverage).<br>
 Choose an item from the respective category and specify the quantity.<br>
