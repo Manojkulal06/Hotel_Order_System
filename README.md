@@ -13,24 +13,17 @@ __Responsive Design__: The system is designed to work on various devices and scr
 
 **Usage**
 
-Clone the repository to your local machine.
-
-Open the index.html file in your web browser.
-
-Select the desired item type (food or beverage).
-
-Choose an item from the respective category and specify the quantity.
-
-Click on the "Add Item" button to add the item to your order.
-
-Repeat steps 3-5 to add more items to your order.
-
-Once you've added all desired items, click on the "Place Order" button.
-
-Enter the tip amount (optional) in the tip calculator and click "Done".
-
-Review the order summary and total bill including tips and service charges.
+Clone the repository to your local machine.<br>
+Open the index.html file in your web browser.<br>
+Select the desired item type (food or beverage).<br>
+Choose an item from the respective category and specify the quantity.<br>
+Click on the "Add Item" button to add the item to your order.<br>
+Repeat steps 3-5 to add more items to your order.<br>
+Once you've added all desired items, click on the "Place Order" button.<br>
+Enter the tip amount (optional) in the tip calculator and click "Done".<br>
+Review the order summary and total bill including tips and service charges.<br>
 
 **Acknowledgements**
-This project utilizes HTML, CSS, and JavaScript.
+
+This project utilizes HTML, CSS, and JavaScript.<br>
 Special thanks to Golden Spoon Hotel for providing the inspiration for this project.
