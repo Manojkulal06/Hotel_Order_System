@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Spoon Hotel</title>
+    <style>
+        body {
+            background-color: #f2f2f2; /* Light gray background */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333; /* Black font color */
+        }
+
+       .container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-image: url('Hotel.webp');
+    background-attachment: fixed;
+    background-size: 100% 100%; /* Set background size to 100% for both width and height */
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+}
+
+
+
+        h1 {
+            text-align: center;
+            color: #ffd700; /* Golden color */
+            font-weight: bold; /* Bold font weight */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #333; /* Black font color */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #totalAmount {
+            display: none;
+            font-weight: bold;
+            color: #000; /* Black font color */
+            background-color: #fff; /* White background */
+            padding: 10px 20px; /* Add padding for better visibility */
+            border-radius: 5px; /* Add some border radius for a rounded appearance */
+            margin: 20px auto; /* Center the element */
+            text-align: center; /* Center text horizontally */
+            font-size: 1.2em; /* Larger font size */
+        }
+
+        #orderMessage {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #0c0c0c; /* Light gray font color */
+        }
+
+        #orderSummary {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Highlighted input label */
+        label {
+            color: #fff; /* White font color */
+            background-color: #000; /* Black background */
+            padding: 5px 10px; /* Add padding for better visibility */
+            border-radius: 5px; /* Add some border radius for a rounded appearance */
+        }
+        #tipCalculator {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        #tipCalculator label {
+            color: #fff; /* Black font color */
+        }
+
+        #tipCalculator button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #tipCalculator button:hover {
+            background-color: #45a049;
+        }
+
+        #tipResult {
+            color: #333; /* Black font color */
+            margin-top: 20px;
+        }
+
+        #grandTotal {
+            font-size: 1.5em; /* Increase font size */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Golden Spoon Hotel</h1>
+
+    <!-- Order Form -->
+    <form id="orderForm">
+        <label for="itemType">Select Item Type:</label>
+        <select id="itemType" onchange="showTable()">
+            <option value="">Select</option>
+            <option value="food">Food Items</option>
+            <option value="beverage">Beverages</option>
+        </select>
+        <br><br>
+
+        <!-- Food Items Section -->
+<h2 id="foodHeader" style="display: none;">Food Items</h2>
+<table id="foodTable" style="display: none;">
+    <!-- Table structure for food items -->
+    <tr>
+        <th>SL. No.</th>
+        <th>ITEM NAME</th>
+        <th>PRICE</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>IDLY</td>
+        <td>₹20</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>DOSA</td>
+        <td>₹50</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>UTTAPAM</td>
+        <td>₹40</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>POORI BHAJI</td>
+        <td>₹60</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>PULAO</td>
+        <td>₹80</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>PARATHA</td>
+        <td>₹30</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>CHOLE BHATURE</td>
+        <td>₹70</td>
+    </tr>
+    <!-- Add more food items here -->
+    <tr>
+        <td>8</td>
+        <td>VEGETABLE BIRYANI</td>
+        <td>₹100</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>PANEER TIKKA</td>
+        <td>₹90</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>CHICKEN TANDOORI</td>
+        <td>₹120</td>
+    </tr>
+</table>
+<br>
+
+<!-- Beverages Section -->
+<h2 id="beverageHeader" style="display: none;">Beverages</h2>
+<table id="beverageTable" style="display: none;">
+    <!-- Table structure for beverages -->
+    <tr>
+        <th>SL. No.</th>
+        <th>ITEM NAME</th>
+        <th>PRICE</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>COFFEE</td>
+        <td>₹10</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>TEA</td>
+        <td>₹10</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>JUICE</td>
+        <td>₹30</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>MILKSHAKE</td>
+        <td>₹40</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>LASSI</td>
+        <td>₹25</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>SOFT DRINK</td>
+        <td>₹20</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>LEMONADE</td>
+        <td>₹15</td>
+    </tr>
+    <!-- Add more beverages here -->
+    <tr>
+        <td>8</td>
+        <td>ICED TEA</td>
+        <td>₹35</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>MOJITO</td>
+        <td>₹45</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>FRUIT PUNCH</td>
+        <td>₹50</td>
+    </tr>
+</table>
+        <br>
+
+        <label for="itemNumber">Enter item number:</label>
+        <input type="number" id="itemNumber" min="1" required>
+        <br><br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1" required>
+        <button type="button" onclick="addItem()">Add Item</button>
+        <br><br>
+        <button type="button" onclick="placeOrder()">Place Order</button>
+    </form>
+    <br>
+
+    <!-- Order Summary and Tip Calculator sections remain the same -->
+
+    <table id="orderSummary">
+        <tr>
+            <th>SL. No.</th>
+            <th>ITEM NAME</th>
+            <th>PRICE</th>
+            <th>QUANTITY</th>
+            <th>SUBTOTAL</th>
+            <th>Action</th>
+        </tr>
+    </table>
+    <div id="totalAmount">Total Amount: ₹<span id="totalValue"></span></div>
+    <div id="tipCalculator" style="display: none;">
+        <label for="totalBill">Item Bill:</label>
+        <span id="totalBill">₹0.00</span><br> <!-- Add line break here -->
+        <label for="tipAmount">Tip Amount:</label>
+        <input type="number" id="tipAmount" min="0" step="0.01">
+        <button onclick="calculateTip()">Done</button>
+        <div id="tipResult"></div>
+        <div id="grandTotal"></div> <!-- Grand total amount -->
+        <div id="orderMessage"></div>
+    </div>
+    
+</div>
+
+<script>
+    let orderItems = [];
+    let totalAmount = 0; // Variable to store the total amount
+    let donePressed = false; // Flag to track if "Done" button is pressed
+
+    // Function to show/hide food or beverage tables based on user selection
+function showTable() {
+    if (donePressed) return; // Check if "Done" button is pressed
+    const itemType = document.getElementById("itemType").value;
+    const foodTable = document.getElementById("foodTable");
+    const beverageTable = document.getElementById("beverageTable");
+    const foodHeader = document.getElementById("foodHeader");
+    const beverageHeader = document.getElementById("beverageHeader");
+
+    // Reset the display of both tables and headers
+    foodHeader.style.display = "none";
+    foodTable.style.display = "none";
+    beverageHeader.style.display = "none";
+    beverageTable.style.display = "none";
+
+    if (itemType === "food") {
+        foodHeader.style.display = "block";
+        foodTable.style.display = "table";
+    } else if (itemType === "beverage") {
+        beverageHeader.style.display = "block";
+        beverageTable.style.display = "table";
+    }
+}
+
+
+    // Function to add an item to the order
+    function addItem() {
+        if (donePressed) return; // Check if "Done" button is pressed
+        const itemType = document.getElementById("itemType").value;
+        if (itemType === "food" || itemType === "beverage") {
+            // Add your existing addItem() logic here
+            const itemNumber = parseInt(document.getElementById("itemNumber").value);
+            const quantity = parseInt(document.getElementById("quantity").value);
+
+            if (isNaN(itemNumber) || itemNumber < 1) {
+                alert("Please select an item before adding it to the order.");
+                return;
+            }
+
+            let table;
+            if (itemType === "food") {
+                table = document.getElementById("foodTable");
+            } else if (itemType === "beverage") {
+                table = document.getElementById("beverageTable");
+            }
+
+            if (itemNumber > table.rows.length - 1) {
+                alert("Invalid item number.");
+                return;
+            }
+
+            // Find item details from the table
+            const itemRow = table.rows[itemNumber];
+            const itemName = itemRow.cells[1].innerText;
+            const itemPrice = parseInt(itemRow.cells[2].innerText.slice(1)); // Remove ₹ sign
+
+            // Calculate subtotal
+            const subtotal = itemPrice * quantity;
+
+            // Add item to orderItems array
+            orderItems.push({
+                itemNumber: itemNumber,
+                itemType: itemType,
+                itemName: itemName,
+                itemPrice: itemPrice,
+                quantity: quantity,
+                subtotal: subtotal
+            });
+
+            // Update order summary table
+            const orderSummaryTable = document.getElementById("orderSummary");
+            orderSummaryTable.style.display = "table"; // Display the table
+            orderSummaryTable.innerHTML = ""; // Clear existing rows
+            orderItems.forEach((item, index) => {
+                const newRow = orderSummaryTable.insertRow(-1);
+                const cells = [
+                    newRow.insertCell(0),
+                    newRow.insertCell(1),
+                    newRow.insertCell(2),
+                    newRow.insertCell(3),
+                    newRow.insertCell(4),
+                    newRow.insertCell(5)
+                ];
+                cells[0].innerText = index + 1;
+                cells[1].innerText = item.itemName;
+                cells[2].innerText = "₹" + item.itemPrice;
+                cells[3].innerText = item.quantity;
+                cells[4].innerText = "₹" + item.subtotal;
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.onclick = function() {
+                    removeItem(index);
+                };
+                cells[5].appendChild(removeButton);
+            });
+
+            // Recalculate total amount
+            calculateTotalAmount();
+
+            // Clear input fields
+            document.getElementById("itemNumber").value = "";
+            document.getElementById("quantity").value = 1;
+        } else {
+            alert("Please select an item type before adding an item.");
+        }
+    }
+
+    // Function to remove an item from the order
+function removeItem(index) {
+    if (!donePressed) { // Check if "Done" button is not pressed
+        const quantityToRemove = prompt("Enter the quantity you want to remove:", "1");
+        const quantityToRemoveInt = parseInt(quantityToRemove);
+        
+        if (!isNaN(quantityToRemoveInt) && quantityToRemoveInt > 0) {
+            if (quantityToRemoveInt < orderItems[index].quantity) {
+                // Reduce the quantity of the item
+                orderItems[index].quantity -= quantityToRemoveInt;
+                // Update the subtotal
+                orderItems[index].subtotal -= quantityToRemoveInt * orderItems[index].itemPrice;
+            } else {
+                // Remove the item completely
+                orderItems.splice(index, 1);
+            }
+            // Refresh order summary
+            displayOrderSummary();
+            // Recalculate total amount
+            calculateTotalAmount();
+        } else {
+            alert("Please enter a valid quantity.");
+        }
+    }
+}
+
+    // Function to display order summary
+    function displayOrderSummary() {
+        const orderSummaryTable = document.getElementById("orderSummary");
+        orderSummaryTable.innerHTML = ""; // Clear existing rows
+        orderItems.forEach((item, index) => {
+            const newRow = orderSummaryTable.insertRow(-1);
+            const cells = [
+                newRow.insertCell(0),
+                newRow.insertCell(1),
+                newRow.insertCell(2),
+                newRow.insertCell(3),
+                newRow.insertCell(4),
+                newRow.insertCell(5)
+            ];
+            cells[0].innerText = index + 1;
+            cells[1].innerText = item.itemName;
+            cells[2].innerText = "₹" + item.itemPrice;
+            cells[3].innerText = item.quantity;
+            cells[4].innerText = "₹" + item.subtotal;
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.onclick = function() {
+                removeItem(index);
+            };
+            cells[5].appendChild(removeButton);
+        });
+    }
+
+    // Function to calculate the total amount
+    function calculateTotalAmount() {
+        totalAmount = orderItems.reduce((total, item) => total + item.subtotal, 0);
+        document.getElementById("totalValue").innerText = totalAmount.toFixed(2);
+    }
+
+    // Function to place the order
+    function placeOrder() {
+        // Check if any item is selected
+        if (orderItems.length === 0) {
+            alert("Please select at least one item before placing the order.");
+            return;
+        }
+
+        // Calculate total amount
+        calculateTotalAmount();
+
+        // Show total amount and order message
+        document.getElementById("tipCalculator").style.display = "block"; // Display tip calculator
+        document.getElementById("totalBill").innerText = "₹" + totalAmount.toFixed(2); // Set total bill in tip calculator
+    }
+
+    // Function to calculate the tip
+    function calculateTip() {
+        var tipAmount = parseFloat(document.getElementById("tipAmount").value);
+
+        if (isNaN(tipAmount)) {
+            document.getElementById("tipResult").innerText = "Please enter a valid tip amount.";
+            return;
+        }
+
+        var tip = tipAmount > totalAmount / 10 ? tipAmount : totalAmount / 10;
+        var serviceCharge = 0; // Initialize service charge to 0
+
+        // Check if the user enters tips less than 10% of the total bill
+        if (tipAmount < totalAmount / 10) {
+            serviceCharge = totalAmount / 10 - tipAmount; // Calculate service charge
+        }
+
+        var grandTotal = totalAmount + tip;
+
+        var result = "Your total bill is ₹" + totalAmount.toFixed(2) + "<br>";
+        result += "Tips: ₹" + tipAmount.toFixed(2) + "<br>";
+
+        // Check if service charge is applied
+        if (serviceCharge > 0) {
+            result += "Service charge is ₹" + serviceCharge.toFixed(2) + "<br>";
+        }
+
+        result += "Your total bill including ";
+
+        if (serviceCharge > 0) {
+            result += "service charge and ";
+        }
+
+        result += "tip is ₹" + grandTotal.toFixed(2) + "<br>";
+
+        document.getElementById("tipResult").innerHTML = result;
+
+        // Show order message after calculating tip
+        document.getElementById("orderMessage").innerText = "Your order has been placed! Enjoy the food and don't waste food :) Thank you for choosing Golden Spoon Hotel."; // Set order message
+        document.getElementById("orderMessage").style.display = "block"; // Display order message
+        
+        // Display grand total amount
+        document.getElementById("grandTotal").innerHTML = "Total Bill: ₹" + grandTotal.toFixed(2);
+
+        donePressed = true; // Set flag to true after "Done" button is pressed
+    }
+</script>
+</body>
+</html>
