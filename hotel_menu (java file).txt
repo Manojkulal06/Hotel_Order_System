@@ -1,0 +1,80 @@
+package com.java.projects;
+
+import java.util.Scanner;
+
+public class HotelMenu {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Hotel Menu");
+		System.out.println("SL. No.       ITEM NAME      PRICE");
+		System.out.println("1             IDLY           20");
+		System.out.println("2             DOSA           50");
+		System.out.println("3             COFFEE         10");
+		System.out.println("4             TEA            10");
+		System.out.println("5             WATERBOTTLE    20");
+		System.out.println("6             VADA           15");
+
+		int total=0;
+		String orderSummary = "";
+		char ch='Y';
+		while(ch=='Y') {
+			System.out.println("What do you want to buy?");
+			int n=sc.nextInt();
+			System.out.println("How many do you want?");
+			int m=sc.nextInt();
+			System.out.println("Do you want more? (Y/N)");
+			String s=sc.next();
+			s=s.toUpperCase();
+			ch=s.charAt(0);
+
+			switch(n) {
+			case 1:
+				orderSummary=orderSummary+"IDLY         "+"20     "+ m+"        "+ 20*m+"\n";
+				total=total+(20*m);
+				break;
+			case 2:
+				orderSummary=orderSummary+"DOSA         "+"50     "+ m+"        "+ 50*m+"\n";
+				total=total+(50*m);
+				break;
+			case 3:
+				orderSummary=orderSummary+"COFFEE       "+"10     "+ m+"        "+ 10*m+"\n";
+				total=total+(10*m);
+				break;
+			case 4:
+				orderSummary=orderSummary+"TEA          "+"10     "+ m+"        "+ 10*m+"\n";
+				total=total+(10*m);
+				break;
+			case 5:
+				orderSummary=orderSummary+"WATERBOTTLE  "+"20     "+ m+"        "+ 20*m+"\n";
+				total=total+(20*m);
+				break;
+			case 6:
+				orderSummary=orderSummary+"VADA         "+"15     "+ m+"        "+ 15*m+"\n";
+				total=total+(15*m);
+				break;
+
+
+			}
+			
+
+		}
+		
+		System.out.println("Your total bill is "+total);
+		System.out.println("How much tip do you want to give");
+		int x =sc.nextInt();
+		int tip=x>total/10? x : total/10;
+		int grandTotal=total+tip;
+		System.out.println("Item orderd");
+		System.out.println("Item name    Price  Quantity Total");
+		System.out.println(orderSummary);
+		System.out.println("Tips "+x);
+		if(x<tip) {
+			System.out.println("Service charge is "+(tip-x));
+			System.out.println("Your total bill including service charge is "+grandTotal);
+		}
+		else {
+			System.out.println("Your total bill including tip is "+grandTotal);
+		}
+	}
+}
